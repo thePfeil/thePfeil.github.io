@@ -1,0 +1,107 @@
+<!DOCTYPE html><html lang="de">
+
+
+
+<head>
+
+  <meta charset="utf-8">
+  <title>Onsen UI</title>
+  <link rel="stylesheet" href="onsenui.min.css">
+  <link rel="stylesheet" href="onsen-css-components.min.css">
+  <script src="onsenui.js"></script>
+</head>
+<body>
+<ons-page>
+  <ons-toolbar>
+    <ons-toolbar-item>
+      <ons-button onclick="ons.notification.alert('tools und onsenui sind bestens!')">
+        ich bin ein tool-button</ons-button>
+    </ons-toolbar-item>
+  </ons-toolbar>
+  <ons-list>
+  
+    <ons-list-item>
+      <ons-button onclick="ons.notification.alert('hey!!!!!!!!!!!!!')" modifier="light">klick mich nicht!!!</ons-button>
+    </ons-list-item>
+    <ons-list-item>
+      <ons-button id="idInfo">Info</ons-button>
+    </ons-list-item>
+	
+    <ons-list-item>
+      <ons-button id="idBestaetigung">Bestätigung
+        </ons-button>
+    </ons-list-item>
+	
+    <ons-list-item>
+      <ons-button id="idEingabe">Eingabe</ons-button>
+    </ons-list-item>
+	
+    <ons-list-item>
+      <ons-button id="idToast">Toast</ons-button>
+    </ons-list-item>
+    <ons-list-item>
+      <ons-card modifier="material">eine karte</ons-card>
+    </ons-list-item>
+    <ons-list-item>
+      <ons-switch></ons-switch>
+    </ons-list-item>
+    <ons-list-item>
+      <ons-checkbox></ons-checkbox>
+    </ons-list-item>
+    <ons-list-item>
+      <ons-input></ons-input>
+    </ons-list-item>
+    <ons-list-item>
+      <ons-search-input></ons-search-input>
+    </ons-list-item>
+    <ons-list-item>
+      <ons-radio></ons-radio>
+    </ons-list-item>
+  </ons-list>
+</ons-page>
+  
+<script>
+   function info()
+   {
+     ons.notification.alert("Info", {buttonLabels:"nein", title:"!!!"});
+   }
+
+   const bestaetigung = function() {
+    ons.platform.select("ios");
+    ons.notification.confirm("WARNUNG!!! Ihr IOS hat einen Virus! Jetzt löschen?", {buttonLabels:["nein", "ja"]})
+       .then(function(sch) {
+         if(sch==0) ons.notification.alert("Abgebrohen");
+         else ons.notification.alert("Reinigung wird durchgeführt...").then( function() {
+           ons.platform.select("android");
+           ons.notification.toast("alles idioten hier, echt! DAS IST EIN ANDROID!!! Ernsthaft... geht gar nicht!", {timeout:2000})
+         } );
+       });
+   };
+
+   const eingabe = function() {
+     ons.notification.prompt("Bitte eine Eingabe")
+       .then(function(tx) {
+         if(tx=="") ons.notification.alert("Keine Eingabe");
+         else ons.notification.alert("Eingegeben: " + tx);
+       });
+   };
+
+   function toast()
+   {
+     ons.notification.toast("Der Toast", {buttonLabel: "okay"});
+   }
+
+   document.getElementById("idInfo")
+      .addEventListener("click", info);
+   document.getElementById("idBestaetigung")
+      .addEventListener("click", bestaetigung);
+   document.getElementById("idEingabe")
+      .addEventListener("click", eingabe);
+   document.getElementById("idToast")
+      .addEventListener("click", toast);
+</script>
+<noscript>
+  Bitte aktivieren sie Javascript!
+</noscript>
+</body>
+</html>
