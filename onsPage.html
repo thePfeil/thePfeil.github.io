@@ -97,7 +97,7 @@
    
    const iosmode = function() {
      ons.notification.confirm("welche OS?", {buttonLabels:["apple allg.", "windows+linux"]}).then(function(sss) {
-       if(sss = 0) { 
+       if(sss == 0) { 
          ons.platform.select("ios");
          ons.notification.toast("apple modus", {buttonLabel: "okay"});
        } else {
