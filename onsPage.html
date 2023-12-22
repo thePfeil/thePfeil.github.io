@@ -59,7 +59,7 @@
       <ons-radio></ons-radio>
     </ons-list-item>
     <ons-list-item>
-      <ons-button id="idSwitchIOS>zu ios modus wechseln?</ons-button>
+      <ons-button id="idSwitchIOS">zu ios modus wechseln?</ons-button>
     </ons-list-item>
   </ons-list>
 </ons-page>
@@ -94,7 +94,20 @@
    {
      ons.notification.toast("Der Toast", {buttonLabel: "okay"});
    }
-  
+   
+   const iosmode = function() {
+     ons.notification.confirm("welche OS?", {buttonLabels:["apple allg.", "windows+linux"]}).then(function(sss) {
+       if(sss = 0) { 
+         ons.platform.select("ios");
+         ons.notification.toast("apple modus", {buttonLabel: "okay"});
+       } else {
+         ons.platform.select("android");
+         ons.notification.toast("windows+linux modus", {buttonLabel: "okay"});
+       }
+      });
+     }
+   }
+
 
    document.getElementById("idInfo")
       .addEventListener("click", info);
@@ -104,6 +117,7 @@
       .addEventListener("click", eingabe);
    document.getElementById("idToast")
       .addEventListener("click", toast);
+   document.getElementById("idSwitchIOS").addEventListener("click", iosmode);
 </script>
 <noscript>
   <h1>Bitte aktivieren sie Javascript</h1>
