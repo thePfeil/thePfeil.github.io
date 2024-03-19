@@ -7,9 +7,9 @@ function info()
     ons.platform.select("ios");
     ons.notification.confirm("WARNING!!! YOUR PHONE HAS A VIRUS! delete now?", {buttonLabels:["no", "yes"]})
        .then(function(sch) {
-         if(sch==0) ons.notification.alert("kanceled");
+         if(sch==0) ons.notification.alert("canceled");
          else ons.notification.alert("cleaning...").then( function() {
-           ons.platform.select("android");
+           // ons.platform.select("android");
            ons.notification.toast("THAT'S NOT REAL!!! Man... stop.", {timeout:2000})
          } );
        });
